@@ -18,6 +18,7 @@ module.exports = function Modal({ children }) {
                   Email
                   <input name="setEmail" className="form-control" type="email" required="true" placeholder="email@email.com" autoComplete="off" />
                 </label>
+                <br />
                 <label className="title-text">
                   Password
                   <input name="setPassword" className="form-control" type="password" required="true" placeholder="password" />
@@ -46,10 +47,12 @@ module.exports = function Modal({ children }) {
                   Name
                   <input name="setName" className="form-control" type="text" autoComplete="off" />
                 </label>
+                <br />
                 <label className="title-text">
                   Email
                   <input name="setEmail" className="form-control" type="email" autoComplete="off" />
                 </label>
+                <br />
                 <label className="title-text">
                   Password
                   <input name="setPassword" className="form-control" type="password" />

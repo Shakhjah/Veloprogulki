@@ -23,11 +23,12 @@ module.exports = function Modal({ children }) {
                   Password
                   <input name="password" className="form-control" type="password" required="true" placeholder="password" />
                 </label>
-                <div className="modal-footer">
-                  <button name="modalClose" type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button name="modalSaveChange" type="submit" className="btn btn-primary">Save changes</button>
-                </div>
               </div>
+              <div className="modal-footer">
+                <button name="modalClose" type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button name="modalSaveChange" type="submit" className="btn btn-primary">Save changes</button>
+              </div>
+
             </form>
           </div>
         </div>

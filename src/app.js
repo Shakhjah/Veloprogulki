@@ -16,7 +16,14 @@ const renderTemplate = require('./lib/RenderTemplate');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public/')));
-
+app.use(session({
+  name: 'velocookie',
+  store: new FileStore(),
+  secret: process.env.SECRET || 'privet bobri',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false },
+}));
 // Добавляем ручки из папки lib
 
 const firstPage = require('./router/firstPage');

@@ -18,9 +18,9 @@ const signUpmodal = document.getElementById('signUpModal');
     console.log('▶ ⇛ FRONT RUN SCRIPT', result);
     // Если есть куки
     if (result) {
-      authOne.setAttribute('hidden', true);
+      authTwo.removeAttribute('hidden', true);
     } else { // Если нет куки
-      authTwo.setAttribute('hidden', true);
+      authOne.removeAttribute('hidden', true);
     }
   } catch (error) {
     console.log(error);

@@ -21,20 +21,23 @@ module.exports = function Layout({ children, userName }) {
         <title>Document</title>
       </head>
       <body>
-        <div className="header">
+        <div className="container">
           <a href="/">Главная </a>
-          <div id="authOne">
-            <a href="/" data-bs-toggle="modal" data-bs-target="#signInModal">
-              <div className="sign-in">Войти</div>
-            </a>
-            <a href="/" data-bs-toggle="modal" data-bs-target="#signUpModal">
-              <div className="sign-up">Регистрация</div>
-            </a>
-          </div>
+          <div className="row log-field">
+            <div id="authOne" hidden>
+              <a href="/" data-bs-toggle="modal" data-bs-target="#signInModal">
+                <div className="sign-in">Войти</div>
+              </a>
+              <a href="/" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                <div className="sign-up">Регистрация</div>
+              </a>
+            </div>
 
-          <div id="authTwo">
-            <a href="/auth/personal">Личный кабинет</a>
-            <a href="/auth/logout">Выйти</a>
+            <div id="authTwo" hidden>
+              <a href="/auth/personal">Личный кабинет</a>
+              <a href="/auth/logout">Выйти</a>
+            </div>
+
           </div>
 
         </div>

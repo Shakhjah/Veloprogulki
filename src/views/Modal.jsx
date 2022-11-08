@@ -34,7 +34,7 @@ module.exports = function Modal({ children }) {
         </div>
       </div>
 
-      // Modal Регистрация
+      {/* Modal Регистрация */}
       <div className="modal fade" id="signUpModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">

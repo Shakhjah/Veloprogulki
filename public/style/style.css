@@ -1,9 +1,10 @@
 body {
     background: wheat;
 }
-.header {
+.log-field {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .red-text {

@@ -8,12 +8,23 @@ const morgan = require('morgan');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session); // хранилище для сессий
 
+
 // Внутренние импорты
 const { sequelize } = require('../db/models');
 const renderTemplate = require('../src/lib/RenderTemplate');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../public/')));
+
+//Добавляем ручки из папки lib  
+
+const firstPage = require('./router/firstPage')
+
+app.use('/', firstPage)
+
 const { SESSION_SECRET } = process.env;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT
 
     app.listen(PORT, async () => {
     try {

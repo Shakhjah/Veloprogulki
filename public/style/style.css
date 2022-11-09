@@ -18,6 +18,10 @@ body {
         width: 800px;
         height: 800px;
 }
+#map_content {
+    width: 600px;
+    height: 400px;
+}
 .topGif {
     background-image: url(bike.jpg);
     height: 250px;
@@ -117,4 +121,31 @@ a:active {
 .red-text {
     color: red;
     font-size: 12px;
+}
+
+.lineBorder {
+    margin: 10px 0px 10px 0px;
+    background-color: #2ca8b9;
+    height: 5px;
+}
+.allPublic {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.content {
+    width: 380px;
+    height: 510px;
+    background-color: #fcdb4a;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.mapDiv {
+    background-color: #505759;
+    margin: 10px;
+    height: 300px;
+    width: 370px;
+
 }

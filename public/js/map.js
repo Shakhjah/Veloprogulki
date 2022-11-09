@@ -140,19 +140,30 @@ function init() {
   }, {
     buttonMaxWidth: 300,
   });
-
+  const geo = ymaps.geocode('Moscow');
+  geo.then(
+    (res) => {
+      // Выведем в консоль данные, полученные в результате геокодирования объекта.
+      console.log('GEO', res.geoObjects.get(0).properties.get('metaDataProperty').getAll());
+    },
+    (err) => {
+      // Обработка ошибки.
+    },
+  );
+  geo.then((res) => console.log('RES', res));
   // Получение инфо о маршруте
   multiRoute.model.events.add('requestsuccess', () => {
     // Получение ссылки на активный маршрут.
     const activeRoute = multiRoute.getActiveRoute();
+    console.log('▶ ⇛ activeRoute', activeRoute.getCountry());
+
+    // console.log('▶ ⇛ geo', geo);
     // Вывод информации о маршруте.
     console.log(`Длина: ${activeRoute.properties.get('distance').text}`);
     console.log(`Время прохождения: ${activeRoute.properties.get('duration').text}`);
     // Для автомобильных маршрутов можно вывести
     // информацию о перекрытых участках.
-    if (activeRoute.properties.get('blocked')) {
-      console.log('На маршруте имеются участки с перекрытыми дорогами.');
-    }
+    console.log('На маршруте имеются участки с перекрытыми дорогами.');
   });
 
   // const myGeocoder = ymaps.geocode('Moscow');
@@ -165,10 +176,12 @@ function init() {
   //   },
   // )
   //   .catch((err) => console.log);
-  const geoCoder = ymaps.geocode('Moscow');
-  geoCoder.then((result) => {
-    console.log(result.geoObjects.get(0).getLocalities());
-  });
+  // myMap.getAdministrativeAreas('Moscow');
+
+  // const geoCoder = ymaps.geocode('Moscow');
+  // geoCoder.then((result) => {
+  //   console.log(result.geoObjects.get(0).getLocalities());
+  // });
   // Получение инфо о маршруте
   //   multiRoute.model.properties('requestsuccess', () => {
   //     // Получение ссылки на активный маршрут.

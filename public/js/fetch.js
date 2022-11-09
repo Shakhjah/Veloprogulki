@@ -27,7 +27,7 @@ const signUpmodal = document.getElementById('signUpModal');
   }
 }());
 
-//
+// войти
 val.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(val);

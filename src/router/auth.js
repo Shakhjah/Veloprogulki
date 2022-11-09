@@ -20,6 +20,8 @@ router.post('/signIn', async (req, res) => {
       } else {
         res.json({ answer: 'Неправильный логин или пароль' });
       }
+    } else {
+      res.json({ answer: 'Неправильный логин или пароль' });
     }
   } catch (error) {
     console.log(error);

@@ -1,5 +1,3 @@
-7.0;
-
 const React = require('react');
 const Modal = require('./Modal');
 
@@ -23,6 +21,7 @@ module.exports = function Layout({ children, userName }) {
       <body>
         <div className="container">
           <a href="/">Главная </a>
+          <a href="/map">Map </a>
           <div className="row log-field">
             <div id="authOne" hidden>
               <a href="/" data-bs-toggle="modal" data-bs-target="#signInModal">

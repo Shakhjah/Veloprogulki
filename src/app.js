@@ -28,9 +28,11 @@ app.use(session({
 
 const firstPage = require('./router/firstPage');
 const auth = require('./router/auth');
+const mapRoute = require('./router/mapRouter');
 
 app.use('/', firstPage);
 app.use('/auth', auth);
+app.use('/map', mapRoute);
 
 const { SESSION_SECRET } = process.env;
 const { PORT } = process.env;

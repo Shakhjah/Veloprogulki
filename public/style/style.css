@@ -12,3 +12,8 @@ body {
     text-align: center;
     font-weight: 500;
 }
+#map {
+    width: 600px;
+    height: 400px;
+
+}

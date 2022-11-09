@@ -103,3 +103,7 @@ dist
 
 # TernJS port file
 .tern-port
+text.md
+./public/js/map-copy.js
+./public/js/map-template.js
+

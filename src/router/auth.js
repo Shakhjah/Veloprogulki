@@ -59,4 +59,7 @@ router.post('/sess', (req, res) => {
   }
 });
 
+router.get('/personal', (req, res) => {
+  
+})
 module.exports = router;

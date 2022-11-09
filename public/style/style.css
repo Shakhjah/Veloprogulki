@@ -113,3 +113,7 @@ a:active {
     color: red;
     font-size: 12px;
 }
+
+.container_personal {
+    display: flex;
+}

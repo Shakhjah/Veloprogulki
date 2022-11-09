@@ -16,12 +16,12 @@ module.exports = function Modal({ children }) {
               <div className="modal-body">
                 <label className="title-text">
                   Email
-                  <input name="email" className="form-control" type="email" required="true" placeholder="email@email.com" autoComplete="off" />
+                  <input name="email" className="form-control" type="email" required="true" placeholder="Email@email.com" autoComplete="off" />
                 </label>
                 <br />
                 <label className="title-text">
                   Password
-                  <input name="password" className="form-control" type="password" required="true" placeholder="password" />
+                  <input name="password" className="form-control" type="password" required="true" placeholder="Password" />
                 </label>
               </div>
               <div className="modal-footer">
@@ -46,17 +46,17 @@ module.exports = function Modal({ children }) {
               <div className="modal-body">
                 <label className="title-text">
                   Name
-                  <input name="name" className="form-control" type="text" autoComplete="off" />
+                  <input name="name" className="form-control" type="text" autoComplete="off" placeholder="Name" />
                 </label>
                 <br />
                 <label className="title-text">
                   Email
-                  <input name="email" className="form-control" type="email" autoComplete="off" />
+                  <input name="email" className="form-control" type="email" autoComplete="off" placeholder="Email@email.com" />
                 </label>
                 <br />
                 <label className="title-text">
                   Password
-                  <input name="password" className="form-control" type="password" />
+                  <input name="password" className="form-control" type="password" placeholder="Password" />
                 </label>
               </div>
               <div className="modal-footer">

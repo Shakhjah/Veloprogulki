@@ -2,56 +2,51 @@ ymaps.ready(() => {
   const myMap = new ymaps.Map('map', {
     center: [55.751574, 37.573856],
     zoom: 12,
-    controls: ['zoomControl', 'routeButtonControl'],
-    behaviors: [],
-    routingMode: ['bicycle'],
+    controls: ['zoomControl', 'routeButtonControl'], // Элементы управления
+    behaviors: ['routeEditor', 'drag', 'multiTouch'],
   }, {
     searchControlProvider: 'yandex#search',
   });
 
-  // Создаём макет содержимого.
-  const MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-    '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>',
-  );
-
-  const myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-    hintContent: 'Собственный значок метки',
-    balloonContent: 'Это красивая метка',
-  }, {
-    // Опции.
-    // Необходимо указать данный тип макета.
-    iconLayout: 'default#image',
-    // Своё изображение иконки метки.
-    iconImageHref: 'images/myIcon.gif',
-    // Размеры метки.
-    iconImageSize: [30, 42],
-    // Смещение левого верхнего угла иконки относительно
-    // её "ножки" (точки привязки).
-    iconImageOffset: [-5, -38],
+  const control = myMap.controls.get('routeButtonControl');
+  control.routePanel.state.set({
+    type: 'bicycle',
   });
 
-  const myPlacemarkWithContent = new ymaps.Placemark([55.661574, 37.573856], {
-    hintContent: 'Собственный значок метки с контентом',
-    balloonContent: 'А эта — новогодняя',
-    iconContent: '12',
-  }, {
-    // Опции.
-    // Необходимо указать данный тип макета.
-    iconLayout: 'default#imageWithContent',
-    // Своё изображение иконки метки.
-    iconImageHref: 'images/ball.png',
-    // Размеры метки.
-    iconImageSize: [48, 48],
-    // Смещение левого верхнего угла иконки относительно
-    // её "ножки" (точки привязки).
-    iconImageOffset: [-24, -24],
-    // Смещение слоя с содержимым относительно слоя с картинкой.
-    iconContentOffset: [15, 15],
-    // Макет содержимого.
-    iconContentLayout: MyIconContentLayout,
+  control.routePanel.options.set({
+    types: {
+      bicycle: true,
+      pedestrian: true,
+      masstransit: false,
+    },
+    routeStrokeColor: '00FF00',
   });
 
-  myMap.geoObjects
-    .add(myPlacemark)
-    .add(myPlacemarkWithContent);
+  // Создаем кнопку, с помощью которой пользователи смогут менять местами начальную и конечную точки маршрута.
+  const switchPointsButton = new ymaps.control.Button({
+    data: { content: 'Поменять местами', title: 'Поменять точки местами' },
+    options: { selectOnClick: false, maxWidth: 160 },
+  });
+  // Объявляем обработчик для кнопки.
+  switchPointsButton.events.add('click', (event) => {
+    // Меняет местами начальную и конечную точки маршрута.
+    control.routePanel.switchPoints();
+  });
+  myMap.controls.add(switchPointsButton);
+
+  // my button
+  const mapSaveButton = document.getElementById('mapSaveId');
+  ymaps.domEvent.manager.add(mapSaveButton, 'click', (event) => {
+    // event.preventDefault();
+    const activeRoute = control.routePanel.state.get({});
+    console.log('▶ ⇛ activeRoute', activeRoute);
+    console.log('▶ ⇛ FROM', activeRoute.from);
+    console.log('▶ ⇛ TO', activeRoute.to);
+    console.log('▶ ⇛ TYPE', activeRoute.type);
+  });
+  // mapSaveButton.events.add('submit', (event) => {
+  //   event.preventDefault();
+  //   const activeRoute = control.routePanel.state.get({});
+  //   console.log('▶ ⇛ activeRoute', activeRoute);
 });
+// });

@@ -23,7 +23,7 @@ module.exports = function Layout({ children, userName }) {
           <div className="topGif" />
           <div className="container_top">
             <div className="stockNav">
-              <a href="/">Главная</a>
+              <a href="/main">Главная</a>
               <a className="leftblock" href="/map">Map </a>
             </div>
             <div id="authOne" hidden>
@@ -36,10 +36,11 @@ module.exports = function Layout({ children, userName }) {
               <a href="/auth/logout">Выйти</a>
             </div>
           </div>
-
+          <div className="lineBorder" />
+          {children}
         </div>
 
-        {children}
+        {/* {children} */}
         <Modal />
       </body>
     </html>

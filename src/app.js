@@ -33,14 +33,14 @@ const mapRoute = require('./router/mapRouter');
 const Main = require('./router/main');
 
 const personal = require('./router/personal');
-
+const AddRise = require('./router/addRise');
 
 app.use('/', firstPage);
 app.use('/auth', auth);
 app.use('/map', mapRoute);
 app.use('/main', Main);
 app.use('/personal', personal);
-
+app.use('/addroad', AddRise);
 
 const { SESSION_SECRET } = process.env;
 const { PORT } = process.env;

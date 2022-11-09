@@ -33,6 +33,7 @@ module.exports = function Layout({ children, userName }) {
 
             <div id="authTwo" hidden>
               <a href="/personal">Личный кабинет</a>
+              <a href="/addroad">Добавить</a>
               <a href="/auth/logout">Выйти</a>
             </div>
           </div>

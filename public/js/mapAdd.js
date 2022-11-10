@@ -77,10 +77,17 @@ ymaps.ready(() => {
   ymaps.domEvent.manager.add(mapSaveButton, 'click', async (event) => {
     // event.preventDefault();
     let activeRoute = control.routePanel.state.get({});
-    console.log('▶ ⇛ activeRoute', activeRoute);
-    console.log('▶ ⇛ FROM', activeRoute.from);
-    console.log('▶ ⇛ TO', activeRoute.to);
-    console.log('▶ ⇛ TYPE', activeRoute.type);
+    console.log('▶ ⇛ IN-BUTTON-activeRoute', activeRoute);
+    console.log('▶ ⇛ IN-BUTTON-FROM', activeRoute.from);
+    console.log('▶ ⇛ IN-BUTTON-TO', activeRoute.to);
+    console.log('▶ ⇛ IN-BUTTON-TYPE', activeRoute.type);
+    const routeObj = {
+      from: activeRoute.from,
+      to: activeRoute.to,
+      type: activeRoute.type,
+      distanse: '',
+      city: '',
+    };
     // Создаем маршрут из полученных координат для получения данных
     const multiRoute = new ymaps.multiRouter.MultiRoute({
       referencePoints: [
@@ -97,16 +104,36 @@ ymaps.ready(() => {
     //-------------------------
     //-------------------------
     // Подписка на событие обновления данных маршрута.
-    multiRoute.model.events.add('requestsuccess', () => {
+    multiRoute.model.events.add('requestsuccess', async () => {
       // Получение ссылки на активный маршрут.
       activeRoute = multiRoute.getActiveRoute();
       // Вывод информации о маршруте.
-      console.log(`Длина3: ${activeRoute.properties.get('distance').text}`);
-      console.log(`Время прохождения3: ${activeRoute.properties.get('duration').text}`);
-      console.log('▶ ⇛ FROM333', activeRoute.from);
-      console.log('▶ ⇛ TO333', activeRoute.to);
-      // -------------------- Формируем обьект для отправки на сервер с картой
+      console.log(`ACTION-PATH-Длина: ${activeRoute.properties.get('distance').text}`);
+      // console.log(`ACTION-PATH-GET: ${activeRoute.properties.get()}`);
+      // console.log(`ACTION-PATH-Время прохождения: ${activeRoute.properties.get('duration').text}`);
+      // console.log('ACTION-PATH-▶ ⇛ FROM', activeRoute.from);
+      // console.log('ACTION-PATH- TO', activeRoute.to);
+      // console.log('ACTION', activeRoute);
+      routeObj.distanse = activeRoute.properties.get('distance').text;
+      // Получаем город
+      const link = `https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=${routeObj.from[0]}&lon=${routeObj.from[1]}&types=place`;
+      const reqCity = await fetch(link);
+      const resCity = await reqCity.json();
+      routeObj.city = resCity[0].value;
+      console.log('▶ ⇛ routeObj.city', routeObj.city);
 
+      const reqMapAdd = await fetch('/addroad', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(routeObj),
+
+      });
+      const result = await reqMapAdd.text();
+
+      // -------------------- Формируем обьект для отправки на сервер с картой
       // Для автомобильных маршрутов можно вывести
       // информацию о перекрытых участках.
       if (activeRoute.properties.get('blocked')) {
@@ -115,92 +142,3 @@ ymaps.ready(() => {
     });
   });
 });
-
-// ----------------------------------- 2 карта
-function init() {
-  // Задаём точки мультимаршрута.
-  const pointA = [55.85810611088341, 38.440435433879074];
-  const pointB = [55.88341498860973, 38.45050623291407];
-  // Создаем мультимаршрут.
-  const multiRoute = new ymaps.multiRouter.MultiRoute({
-    referencePoints: [
-      pointA,
-      pointB,
-    ],
-    params: {
-      // Тип маршрутизации - пешеходная маршрутизация.
-      routingMode: 'bicycle',
-    },
-  }, {
-    // Автоматически устанавливать границы карты так, чтобы маршрут был виден целиком.
-    boundsAutoApply: true,
-  });
-  // ----- Настройка вида
-  multiRoute.options.set({
-    // Цвет метки начальной точки.
-    wayPointStartIconFillColor: 'red',
-    // Цвет метки конечной точки.
-    wayPointFinishIconFillColor: 'blue',
-    // Внешний вид линии активного маршрута.
-    routeActiveStrokeWidth: 8,
-    routeActiveStrokeStyle: 'solid',
-    routeActiveStrokeColor: '#002233',
-    // Внешний вид линий альтернативных маршрутов.
-    routeStrokeStyle: 'dot',
-    routeStrokeWidth: 3,
-    boundsAutoApply: true,
-  });
-  // Включение режима редактирования.
-  // multiRoute.editor.start();
-  // А вот так можно отключить режим редактирования.
-  // multiRoute.editor.stop();
-  //---------------------------
-  // Создаем кнопку. Поменять местами.
-  const changePointsButton = new ymaps.control.Button({
-    data: { content: 'Поменять местами точки А и В' },
-    options: { selectOnClick: true },
-  });
-
-  // Объявляем обработчики для кнопки.
-  changePointsButton.events.add('select', () => {
-    multiRoute.model.setReferencePoints([pointB, pointA]);
-  });
-
-  changePointsButton.events.add('deselect', () => {
-    multiRoute.model.setReferencePoints([pointA, pointB]);
-  });
-
-  // Создаем карту с добавленной на нее кнопкой.
-  const myMap = new ymaps.Map('map2', {
-    center: pointA,
-    zoom: 12,
-    controls: [changePointsButton],
-  }, {
-    buttonMaxWidth: 300,
-  });
-
-  // Получение инфо о маршруте
-  multiRoute.model.events.add('requestsuccess', () => {
-    // Получение ссылки на активный маршрут.
-    const activeRoute = multiRoute.getActiveRoute();
-    // Вывод информации о маршруте.
-    console.log(`distance-MAP-2: ${activeRoute.properties.get('distance').text}`);
-    console.log(`Time-MAP-2: ${activeRoute.properties.get('duration').text}`);
-    // console.log(activeRoute);
-
-    // Для автомобильных маршрутов можно вывести
-    // информацию о перекрытых участках.
-    if (activeRoute.properties.get('blocked')) {
-      console.log('На маршруте имеются участки с перекрытыми дорогами.');
-    }
-  });
-
-  // Добавляем мультимаршрут на карту.
-  myMap.geoObjects.add(multiRoute);
-}
-
-ymaps.ready(init);
-
-// https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=55.85810611088341&lon=38.440435433879074&types=place
-// https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=55.89259179257202&lon=37.44131121542615&types=place
-// 55.89259179257202, 37.44131121542615

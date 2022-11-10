@@ -16,14 +16,11 @@ module.exports = function (props) {
             <div className="map-block">
               <div id="map" />
             </div>
-            <div className="map-block">
-              <div id="map2" />
-            </div>
           </div>
           <button type="submit" name="map-save" id="mapSaveId">Сохранить маршрут</button>
         </div>
 
-        <script defer src="js/map.js" />
+        <script defer src="js/mapAdd.js" />
       </div>
     </Layout>
   );

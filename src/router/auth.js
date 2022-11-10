@@ -10,7 +10,6 @@ router.post('/signIn', async (req, res) => {
     const findUser = await User.findOne({ where: { email } });
     if (findUser) {
       const isUserAuth = await bcrypt.compare(password, findUser.password);
-      console.log('▶ ⇛ isUserAuth', isUserAuth);
       if (isUserAuth) {
         req.session.username = findUser.name;
         req.session.userid = findUser.id;
@@ -52,9 +51,6 @@ router.get('/logout', (req, res) => {
 });
 
 router.post('/sess', (req, res) => {
-  console.log('▶ ⇛ req.session?.name', req.session.username);
-  console.log('▶ ⇛  req.session.userid', req.session.userid);
-  console.log('▶ ⇛ req.sessionAUUUUTH', req.session);
   if (req.session?.username) {
     res.json({ user: req.session.username });
   } else {

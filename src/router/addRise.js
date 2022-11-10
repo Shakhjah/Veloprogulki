@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
   console.log('IN ROUTE INADDRISE userId', userId);
   renderTemplate(AddRise, { userName, userId }, res);
 });
+
 router.post('/', async (req, res) => {
   console.log('req.body------------>', req.body);
   const newMap = await BikeTrack.create({
@@ -17,7 +18,7 @@ router.post('/', async (req, res) => {
     mapTo: JSON.stringify(req.body.to),
     routeType: req.body.type,
     distanse: req.body.distanse,
-    userId: req.body.userid,
+    userId: req.body.userId,
     city: req.body.city,
     title: req.body.title,
   });

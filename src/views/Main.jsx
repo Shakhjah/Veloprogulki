@@ -1,7 +1,8 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function (props) {
+module.exports = function ({ dataMap }) {
+  // console.log('▶ ⇛ Allmaps', dataMap);
   return (
     <Layout>
       <script
@@ -10,78 +11,39 @@ module.exports = function (props) {
         type="text/javascript"
       />
       <div className="allPublic">
-        <div className="content">
-          {' '}
-          <div className="mapDiv">1</div>
-          {' '}
-          <div className="text_content">
-            <p>Длина маршрута: 2,5км</p>
-            <p>Населенный пункт: Москва</p>
-            <p>Название маршрута: Мой маршрут №1</p>
-            <p>Автор: Василий Петров</p>
-            <p>Рейтинг: 4,7</p>
-          </div>
-          <div className="btn_content">
-            <a href="#">Подробнее</a>
-            {/* <button type="button" className="button_content">
-              Редактировать
-            </button> */}
-          </div>
-        </div>
-        <div className="content">
-          {' '}
-          <div className="mapDiv">1</div>
-          {' '}
-          <div className="text_content">
-            <p>Длина маршрута: 2,5км</p>
-            <p>Населенный пункт: Москва</p>
-            <p>Название маршрута: Мой маршрут №1</p>
-            <p>Автор: Василий Петров</p>
-            <p>Рейтинг: 4,7</p>
-          </div>
-          <div className="btn_content">
-            <a href="#">Подробнее</a>
-            {/* <button type="button" className="button_content">
-              Редактировать
-            </button> */}
-          </div>
-        </div>
-        <div className="content">
-          {' '}
-          <div className="mapDiv">1</div>
-          {' '}
-          <div className="text_content">
-            <p>Длина маршрута: 2,5км</p>
-            <p>Населенный пункт: Москва</p>
-            <p>Название маршрута: Мой маршрут №1</p>
-            <p>Автор: Василий Петров</p>
-            <p>Рейтинг: 4,7</p>
-          </div>
-          <div className="btn_content">
-            <a href="#">Подробнее</a>
-            {/* <button type="button" className="button_content">
-              Редактировать
-            </button> */}
-          </div>
-        </div>
-        <div className="content">
-          {' '}
-          <div className="mapDiv">1</div>
-          {' '}
-          <div className="text_content">
-            <p>Длина маршрута: 2,5км</p>
-            <p>Населенный пункт: Москва</p>
-            <p>Название маршрута: Мой маршрут №1</p>
-            <p>Автор: Василий Петров</p>
-            <p>Рейтинг: 4,7</p>
-          </div>
-          <div className="btn_content">
-            <a href="#">Подробнее</a>
-            {/* <button type="button" className="button_content">
-              Редактировать
-            </button> */}
-          </div>
-        </div>
+        {Array.isArray(dataMap) && (
+          dataMap.map((el) => (
+            <div className="content">
+              <div className="mapDiv">1</div>
+              <div className="text_content">
+                <p>
+                  Длина маршрута:
+                  {' '}
+                  {el.distanse}
+                </p>
+                <p>
+                  Населенный пункт:
+                  {' '}
+                  {el.city}
+                </p>
+                <p>
+                  Название маршрута:
+                  {' '}
+                  {el.title}
+                </p>
+                <p>
+                  Автор:
+                  {' '}
+                  {el.User.dataValues.name}
+                </p>
+                <p>Рейтинг: 4,7</p>
+              </div>
+              <div className="btn_content">
+                <a href={`/about/${el.id}`}>Подробнее</a>
+              </div>
+            </div>
+          ))
+        )}
       </div>
       <script defer src="js/map.js" />
     </Layout>

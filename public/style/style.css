@@ -14,9 +14,14 @@ body {
         height: 800px;
     }
     
-    #map2 {
+#map2 {
         width: 800px;
         height: 800px;
+        }
+        
+        #mapAbout {
+            width: 800px;
+    height: 800px;
 }
 #map_content {
     width: 600px;

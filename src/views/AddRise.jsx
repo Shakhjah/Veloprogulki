@@ -1,7 +1,8 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function (props) {
+module.exports = function ({ userName, userId }) {
+  console.log('IN ADDRISE VIEWS', userName, userId);
   return (
     <Layout>
       <div className="allPublic">
@@ -18,6 +19,13 @@ module.exports = function (props) {
             </div>
           </div>
           <button type="submit" name="map-save" id="mapSaveId">Сохранить маршрут</button>
+          <div className="block-field">
+            <form id="addMapForm" action="/" method="post">
+              <input name="addMap-userId" value={userId} hidden />
+              <input type="text" name="addMap-title" />
+              {/* <input type="text" name="addMap-body" /> */}
+            </form>
+          </div>
         </div>
 
         <script defer src="js/mapAdd.js" />

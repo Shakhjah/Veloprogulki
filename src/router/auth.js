@@ -6,15 +6,14 @@ const { User } = require('../../db/models');
 
 router.post('/signIn', async (req, res) => {
   const { email, password } = req.body;
-  console.log('▶ ⇛ req.body', req.body);
   try {
     const findUser = await User.findOne({ where: { email } });
-    console.log('▶ ⇛ findUser', findUser);
     if (findUser) {
       const isUserAuth = await bcrypt.compare(password, findUser.password);
       console.log('▶ ⇛ isUserAuth', isUserAuth);
       if (isUserAuth) {
         req.session.username = findUser.name;
+        req.session.userid = findUser.id;
         res.status(200);
         res.json({ user: findUser.name });
       } else {
@@ -36,6 +35,8 @@ router.post('/signUp', async (req, res) => {
     if (!checkEmail) {
       const newUser = await User.create({ name, email, password: hashedPassword });
       req.session.username = newUser.name;
+      const newUserId = await User.findOne({ where: { email } });
+      req.session.userid = newUserId.id;
       res.json({ user: newUser.name });
     } else {
       res.json({ answer: 'Такой юзер существует' });
@@ -52,6 +53,8 @@ router.get('/logout', (req, res) => {
 
 router.post('/sess', (req, res) => {
   console.log('▶ ⇛ req.session?.name', req.session.username);
+  console.log('▶ ⇛  req.session.userid', req.session.userid);
+  console.log('▶ ⇛ req.sessionAUUUUTH', req.session);
   if (req.session?.username) {
     res.json({ user: req.session.username });
   } else {
@@ -60,6 +63,6 @@ router.post('/sess', (req, res) => {
 });
 
 router.get('/personal', (req, res) => {
-  
-})
+
+});
 module.exports = router;

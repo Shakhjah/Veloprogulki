@@ -74,20 +74,31 @@ ymaps.ready(() => {
 
   // my button Сохранить маршрут
   const mapSaveButton = document.getElementById('mapSaveId');
+  const addMapForm = document.getElementById('addMapForm');
   ymaps.domEvent.manager.add(mapSaveButton, 'click', async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     let activeRoute = control.routePanel.state.get({});
     console.log('▶ ⇛ IN-BUTTON-activeRoute', activeRoute);
     console.log('▶ ⇛ IN-BUTTON-FROM', activeRoute.from);
     console.log('▶ ⇛ IN-BUTTON-TO', activeRoute.to);
     console.log('▶ ⇛ IN-BUTTON-TYPE', activeRoute.type);
+    // -- Берем данные из инпутов по name
+    const formData = new FormData(addMapForm);
+    // const mapBody = formData.get('addMap-title'); // 'John'
+    // const surname = formData.get('addMap-body'); // 'Smith'
+    // const addMapuserId = formData.get('addMap-userId'); // 'Smith'
+    // console.log('▶ ⇛ addMap-userId', addMapuserId);
     const routeObj = {
       from: activeRoute.from,
       to: activeRoute.to,
       type: activeRoute.type,
       distanse: '',
       city: '',
+      title: formData.get('addMap-title'),
+      body: formData.get('addMap-body'),
+      userId: formData.get('addMap-userId'),
     };
+
     // Создаем маршрут из полученных координат для получения данных
     const multiRoute = new ymaps.multiRouter.MultiRoute({
       referencePoints: [
@@ -109,11 +120,7 @@ ymaps.ready(() => {
       activeRoute = multiRoute.getActiveRoute();
       // Вывод информации о маршруте.
       console.log(`ACTION-PATH-Длина: ${activeRoute.properties.get('distance').text}`);
-      // console.log(`ACTION-PATH-GET: ${activeRoute.properties.get()}`);
-      // console.log(`ACTION-PATH-Время прохождения: ${activeRoute.properties.get('duration').text}`);
-      // console.log('ACTION-PATH-▶ ⇛ FROM', activeRoute.from);
-      // console.log('ACTION-PATH- TO', activeRoute.to);
-      // console.log('ACTION', activeRoute);
+
       routeObj.distanse = activeRoute.properties.get('distance').text;
       // Получаем город
       const link = `https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=${routeObj.from[0]}&lon=${routeObj.from[1]}&types=place`;
@@ -121,7 +128,7 @@ ymaps.ready(() => {
       const resCity = await reqCity.json();
       routeObj.city = resCity[0].value;
       console.log('▶ ⇛ routeObj.city', routeObj.city);
-
+      // Отправляем наш сформированный обьект на сервер
       const reqMapAdd = await fetch('/addroad', {
         method: 'POST',
         headers: {
@@ -141,4 +148,8 @@ ymaps.ready(() => {
       }
     });
   });
+  console.log('▶ ⇛ addMapForm', addMapForm);
+  console.log('▶ ⇛ addMapForm', addMapForm);
+  console.log('▶ ⇛ addMapForm', addMapForm);
+  console.log('▶ ⇛ addMapForm', addMapForm);
 });

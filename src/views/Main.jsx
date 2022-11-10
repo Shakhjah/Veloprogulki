@@ -15,11 +15,17 @@ module.exports = function (props) {
           <div className="mapDiv">1</div>
           {' '}
           <div className="text_content">
-            <p>Длина маршрута</p>
+            <p>Длина маршрута: 2,5км</p>
             <p>Населенный пункт: Москва</p>
             <p>Название маршрута: Мой маршрут №1</p>
             <p>Автор: Василий Петров</p>
             <p>Рейтинг: 4,7</p>
+          </div>
+          <div className="btn_content">
+            <a href="#">Подробнее</a>
+            {/* <button type="button" className="button_content">
+              Редактировать
+            </button> */}
           </div>
         </div>
         <div className="content">
@@ -27,11 +33,17 @@ module.exports = function (props) {
           <div className="mapDiv">1</div>
           {' '}
           <div className="text_content">
-            <p>Длина маршрута</p>
+            <p>Длина маршрута: 2,5км</p>
             <p>Населенный пункт: Москва</p>
             <p>Название маршрута: Мой маршрут №1</p>
             <p>Автор: Василий Петров</p>
             <p>Рейтинг: 4,7</p>
+          </div>
+          <div className="btn_content">
+            <a href="#">Подробнее</a>
+            {/* <button type="button" className="button_content">
+              Редактировать
+            </button> */}
           </div>
         </div>
         <div className="content">
@@ -39,11 +51,17 @@ module.exports = function (props) {
           <div className="mapDiv">1</div>
           {' '}
           <div className="text_content">
-            <p>Длина маршрута</p>
+            <p>Длина маршрута: 2,5км</p>
             <p>Населенный пункт: Москва</p>
             <p>Название маршрута: Мой маршрут №1</p>
             <p>Автор: Василий Петров</p>
             <p>Рейтинг: 4,7</p>
+          </div>
+          <div className="btn_content">
+            <a href="#">Подробнее</a>
+            {/* <button type="button" className="button_content">
+              Редактировать
+            </button> */}
           </div>
         </div>
         <div className="content">
@@ -51,11 +69,17 @@ module.exports = function (props) {
           <div className="mapDiv">1</div>
           {' '}
           <div className="text_content">
-            <p>Длина маршрута</p>
+            <p>Длина маршрута: 2,5км</p>
             <p>Населенный пункт: Москва</p>
             <p>Название маршрута: Мой маршрут №1</p>
             <p>Автор: Василий Петров</p>
             <p>Рейтинг: 4,7</p>
+          </div>
+          <div className="btn_content">
+            <a href="#">Подробнее</a>
+            {/* <button type="button" className="button_content">
+              Редактировать
+            </button> */}
           </div>
         </div>
       </div>

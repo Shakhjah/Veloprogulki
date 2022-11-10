@@ -108,6 +108,19 @@ a:active {
 .btn-secondary:hover {
     background-color: #fcdb4a;
 }
+
+.button_content {
+    padding: 0px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 200px;
+}
+.button_content:hover {
+    background-color: #fcdb4a;
+
+}
+
 .modal-dialog-centered {
     display: flex;
     min-height: calc(100% - var(--bs-modal-margin) * 2);
@@ -135,16 +148,33 @@ a:active {
 }
 .content {
     width: 380px;
-    height: 510px;
-    background-color: #fcdb4a;
+    height: 570px;
+    border:  2px solid #fcdb4a;
+    border-radius: 10px;
     margin-bottom: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+.content_lk {
+    width: 380px;
+    height: 570px;
+    border:  2px solid #fcdb4a;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .mapDiv {
     background-color: #505759;
     margin: 10px;
     height: 300px;
     width: 370px;
+}
+
+.container_personal {
+    display: flex;
+    flex-direction: column;
 }

@@ -22,7 +22,7 @@ module.exports = function (props) {
         <button type="submit" name="map-save" id="mapSaveId">Сохранить маршрут</button>
       </div>
 
-      <script defer src="js/map.js" />
+      <script defer src="js/map2.js" />
     </Layout>
   );
 };

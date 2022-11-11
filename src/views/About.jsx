@@ -2,7 +2,12 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function About({ data, userName }) {
-  console.log('▶ ⇛ data', data);
+  // const linkFrom = data.mapFrom.replaceAll('[,]', '');
+  const linkFrom = (JSON.parse(data.mapFrom)).join(',');
+  const linkTo = (JSON.parse(data.mapTo)).join(',');
+  // console.log('▶ ⇛ linkFrom', linkFrom);
+  // console.log('▶ ⇛ dataFROM', data.mapFrom);
+  // console.log('▶ ⇛ data', data);
   return (
     <Layout>
       <script
@@ -22,6 +27,7 @@ module.exports = function About({ data, userName }) {
             <div id="mapAbout" />
           </div>
         </div>
+        <a href={`https://yandex.ru/maps/?z=7&l=map&rtext=${linkFrom}~${linkTo}&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end`}>Ссылка на карту</a>
       </div>
       <script defer src="js/mapAbout.js" />
     </Layout>

@@ -9,6 +9,7 @@ ymaps.ready(() => {
   });
   // Получение ссылки на панель.
   const control = myMap.controls.get('routeButtonControl');
+  console.log('▶ ⇛ controlMY', control);
   control.routePanel.state.set({
     type: 'bicycle',
   });
@@ -150,6 +151,7 @@ function init() {
     routeStrokeWidth: 3,
     boundsAutoApply: true,
   });
+
   // Включение режима редактирования.
   // multiRoute.editor.start();
   // А вот так можно отключить режим редактирования.
@@ -179,15 +181,19 @@ function init() {
     buttonMaxWidth: 300,
   });
 
+  // console.log('▶ ⇛ zoom', myMap._zoom);
   // Получение инфо о маршруте
   multiRoute.model.events.add('requestsuccess', () => {
     // Получение ссылки на активный маршрут.
     const activeRoute = multiRoute.getActiveRoute();
     // Вывод информации о маршруте.
-    console.log(`distance-MAP-2: ${activeRoute.properties.get('distance').text}`);
-    console.log(`Time-MAP-2: ${activeRoute.properties.get('duration').text}`);
+    // console.log(`distance-MAP-2: ${activeRoute.properties.get('distance').text}`);
+    // console.log(`Time-MAP-2: ${activeRoute.properties.get('duration').text}`);
     // console.log(activeRoute);
-
+    //----------------------
+    const activeRoutePaths = activeRoute.getPaths();
+    // console.log('▶ ⇛ activeRoutePaths', activeRoutePaths);
+    //----------------------
     // Для автомобильных маршрутов можно вывести
     // информацию о перекрытых участках.
     if (activeRoute.properties.get('blocked')) {
@@ -204,3 +210,38 @@ ymaps.ready(init);
 // https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=55.85810611088341&lon=38.440435433879074&types=place
 // https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=55.89259179257202&lon=37.44131121542615&types=place
 // 55.89259179257202, 37.44131121542615
+
+// https://static-maps.yandex.ru/1.x/?ll=37.44131121542615,55.89259179257202&spn=0.1,0.1&l=map&pt=37.44131121542615,55.89259179257202
+// https://static-maps.yandex.ru/1.x/?ll=55.79876910241722,37.539981486535005~55.75628533403617,37.509463920051545&spn=0.1,0.1&l=map&pt=37.44131121542615,55.89259179257202
+
+// 55.75628533403617,37.509463920051545
+// 55.79876910241722,37.539981486535005
+
+// https://static-maps.yandex.ru/1.x/?ll=37.539981486535005,55.79876910241722&spn=0.1,0.1&l=map&pt=37.509463920051545,55.75628533403617&pt=37.539981486535005,55.79876910241722
+
+// https://static-maps.yandex.ru/1.x/?ll=37.539981486535005,55.79876910241722&spn=0.1,0.1&l=map&pt=37.539981486535005,55.79876910241722,org~37.509463920051545,55.75628533403617,org
+// https://static-maps.yandex.ru/1.x/?ll=37.539981486535005,55.79876910241722&spn=0.1,0.1&l=map&pt=37.539981486535005,55.79876910241722,org~37.509463920051545,55.75628533403617,org&pl=37.539981486535005,55.79876910241722,37.509463920051545,55.75628533403617
+// https://static-maps.yandex.ru/1.x/?ll=37.539981486535005,55.79876910241722&l=map&pt=37.539981486535005,55.79876910241722,org~37.509463920051545,55.75628533403617,org&pl=37.539981486535005,55.79876910241722,37.509463920051545,55.75628533403617
+
+// intent://maps.yandex.ru/?z=14&ll=37.19202049999994,55.98413958437002&l=map&rtext=55.96876622138302,37.18155253145688~55.984166690571904,37.19528544161313&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000#Intent;scheme=http;package=ru.yandex.yandexmaps;S.browser_fallback_url=https://yandex.ru/maps/?z=14&ll=37.19202049999994,55.98413958437002&l=map&rtext=55.96876622138302,37.18155253145688~55.984166690571904,37.19528544161313&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end
+// intent://maps.yandex.ru/?z=15&ll=37.48819349999998,55.759552072768464&l=map&rtext=55.767835378298585,37.48676645967953~55.75525276485352,37.4898563644647&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000#Intent;scheme=http;package=ru.yandex.yandexmaps;S.browser_fallback_url=https://yandex.ru/maps/?z=15&ll=37.48819349999998,55.759552072768464&l=map&rtext=55.767835378298585,37.48676645967953~55.75525276485352,37.4898563644647&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end
+// intent://maps.yandex.ru/?z=15&ll=37.48819349999998,55.759552072768464&l=map&rtext=55.767835378298585,37.48676645967953~55.75525276485352,37.4898563644647&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000#Intent;scheme=http;package=ru.yandex.yandexmaps
+
+// https://yandex.ru/maps/?z=15&ll=37.48819349999998,55.759552072768464&l=map&rtext=55.767835378298585,37.48676645967953~55.75525276485352,37.4898563644647&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end
+// https://yandex.ru/maps/?ll=55.78581991120715,37.39494987696253&l=map&rtext=37.39494987696253,55.78581991120715~55.78581991120715,37.39494987696253,43.70110222071254&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end
+
+// intent://maps.yandex.ru/?z=7&ll=40.55733800000003,56.21412150951421&l=map&rtext=55.78581991120715,37.39494987696253~56.42432087202024,43.70110222071254&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000#Intent;scheme=http;package=ru.yandex.yandexmaps;S.browser_fallback_url=
+
+// https://yandex.ru/maps/?z=7&l=map&rtext=55.78581991120715,37.39494987696253~56.42432087202024,43.70110222071254&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end
+// [55.78581991120715,37.39494987696253]
+// [56.42432087202024,43.70110222071254]
+
+// [56.11591438441894,40.35450590449432]
+// [56.14369845639928,40.41883705809757]
+// https://yandex.ru/maps/?z=7&l=map&rtext=56.11591438441894,40.35450590449432~56.14369845639928,40.41883705809757&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end
+const myToast = document.getElementById('toast');
+const toast = new bootstrap.Toast(myToast);
+// toast.show();
+
+// var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+// var toastList = toastElList.map(function(toastEl)

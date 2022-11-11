@@ -12,19 +12,22 @@ module.exports = function ({ userName, userId }) {
           type="text/javascript"
         />
 
-        <div className="container">
+        <div className="container" id="addMap">
           <div className="row map-wrap">
             <div className="map-block">
               <div id="map" />
             </div>
           </div>
-          <button type="submit" name="map-save" id="mapSaveId">Сохранить маршрут</button>
           <div className="block-field">
             <form id="addMapForm" action="/" method="post">
               <input name="addMap-userId" value={userId} hidden />
-              <input type="text" name="addMap-title" />
-              {/* <input type="text" name="addMap-body" /> */}
+              <label>
+                Название маршрута
+                <input type="text" name="addMap-title" placeholde="Текст" />
+              </label>
             </form>
+            <button type="submit" name="map-save" id="mapSaveId">Сохранить маршрут</button>
+            <div id="noChoiseId" className="no-choise red-text">Вы ничего не выбрали</div>
           </div>
         </div>
 

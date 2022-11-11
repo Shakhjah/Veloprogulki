@@ -86,7 +86,7 @@ function init() {
   }, {
     buttonMaxWidth: 300,
   });
-
+  console.log('▶ ⇛ zoomABOUT', myMap._zoom);
   // Получение инфо о маршруте
   multiRoute.model.events.add('requestsuccess', () => {
     // Получение ссылки на активный маршрут.

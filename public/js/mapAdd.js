@@ -72,84 +72,80 @@ ymaps.ready(() => {
   });
   myMap.controls.add(switchPointsButton);
 
-  // my button Сохранить маршрут
+  // my button Сохранить маршрут Начало блока с кнопкой
   const mapSaveButton = document.getElementById('mapSaveId');
   const addMapForm = document.getElementById('addMapForm');
   ymaps.domEvent.manager.add(mapSaveButton, 'click', async (event) => {
     event.preventDefault();
+    // В activeRoute лежит инфо о выбранном маршруте
     let activeRoute = control.routePanel.state.get({});
-    console.log('▶ ⇛ IN-BUTTON-activeRoute', activeRoute);
-    console.log('▶ ⇛ IN-BUTTON-FROM', activeRoute.from);
-    console.log('▶ ⇛ IN-BUTTON-TO', activeRoute.to);
-    console.log('▶ ⇛ IN-BUTTON-TYPE', activeRoute.type);
-    // -- Берем данные из инпутов по name
-    const formData = new FormData(addMapForm);
-    // const mapBody = formData.get('addMap-title'); // 'John'
-    // const surname = formData.get('addMap-body'); // 'Smith'
-    // const addMapuserId = formData.get('addMap-userId'); // 'Smith'
-    // console.log('▶ ⇛ addMap-userId', addMapuserId);
-    const routeObj = {
-      from: activeRoute.from,
-      to: activeRoute.to,
-      type: activeRoute.type,
-      distanse: '',
-      city: '',
-      title: formData.get('addMap-title'),
-      body: formData.get('addMap-body'),
-      userId: formData.get('addMap-userId'),
-    };
-
-    // Создаем маршрут из полученных координат для получения данных
-    const multiRoute = new ymaps.multiRouter.MultiRoute({
-      referencePoints: [
-        activeRoute.from,
-        activeRoute.to,
-      ],
-      params: {
+    if (activeRoute.from && activeRoute.to) {
+      // -- Берем данные из инпутов по name
+      const formData = new FormData(addMapForm);
+      const routeObj = {
+        from: activeRoute.from,
+        to: activeRoute.to,
+        type: activeRoute.type,
+        distanse: '',
+        city: '',
+        title: formData.get('addMap-title'),
+        body: formData.get('addMap-body'),
+        userId: formData.get('addMap-userId'),
+      };
+      // Создаем маршрут из полученных координат для получения данных
+      const multiRoute = new ymaps.multiRouter.MultiRoute({
+        referencePoints: [
+          activeRoute.from,
+          activeRoute.to,
+        ],
+        params: {
         // Тип маршрутизации - пешеходная маршрутизация.
-        routingMode: 'bicycle',
-      },
-    }, {
-      boundsAutoApply: true,
-    });
-    //-------------------------
-    //-------------------------
-    // Подписка на событие обновления данных маршрута.
-    multiRoute.model.events.add('requestsuccess', async () => {
-      // Получение ссылки на активный маршрут.
-      activeRoute = multiRoute.getActiveRoute();
-      // Вывод информации о маршруте.
-      console.log(`ACTION-PATH-Длина: ${activeRoute.properties.get('distance').text}`);
-
-      routeObj.distanse = activeRoute.properties.get('distance').text;
-      // Получаем город
-      const link = `https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=${routeObj.from[0]}&lon=${routeObj.from[1]}&types=place`;
-      const reqCity = await fetch(link);
-      const resCity = await reqCity.json();
-      routeObj.city = resCity[0].value;
-      console.log('▶ ⇛ routeObj.city', routeObj.city);
-      // Отправляем наш сформированный обьект на сервер
-      const reqMapAdd = await fetch('/addroad', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
+          routingMode: 'bicycle',
         },
-        body: JSON.stringify(routeObj),
-
+      }, {
+        boundsAutoApply: true,
       });
-      const result = await reqMapAdd.text();
+      // Подписка на событие обновления данных маршрута.
+      multiRoute.model.events.add('requestsuccess', async () => {
+      // Получение ссылки на активный маршрут.
+        activeRoute = multiRoute.getActiveRoute();
+        // Вывод информации о маршруте.
+        console.log(`ACTION-PATH-Длина: ${activeRoute.properties.get('distance').text}`);
 
-      // -------------------- Формируем обьект для отправки на сервер с картой
-      // Для автомобильных маршрутов можно вывести
-      // информацию о перекрытых участках.
-      if (activeRoute.properties.get('blocked')) {
-        console.log('На маршруте имеются участки с перекрытыми дорогами.');
-      }
-    });
+        routeObj.distanse = activeRoute.properties.get('distance').text;
+        // Получаем город
+        const link = `https://api.geotree.ru/address.php?key=7mAEh31NHvpF&lat=${routeObj.from[0]}&lon=${routeObj.from[1]}&types=place`;
+        const reqCity = await fetch(link);
+        const resCity = await reqCity.json();
+        routeObj.city = resCity[0].value;
+        console.log('▶ ⇛ routeObj.city', routeObj.city);
+        // Отправляем наш сформированный обьект на сервер
+        const reqMapAdd = await fetch('/addroad', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(routeObj),
+
+        });
+        const result = await reqMapAdd.text();
+        // Ответ с сервер "ОК" Карта создана
+        if (result) {
+          const mapBlock = document.getElementById('addMap');
+          mapBlock.setAttribute('hidden', 'true');
+        }
+
+        // // -------------------- Формируем обьект для отправки на сервер с картой
+        // // Для автомобильных маршрутов можно вывести
+        // // информацию о перекрытых участках.
+        // if (activeRoute.properties.get('blocked')) {
+        //   console.log('На маршруте имеются участки с перекрытыми дорогами.');
+        // }
+      });
+      //-------------------------
+    } else {
+      console.log('Ничего не выбрано');
+    }
   });
-  console.log('▶ ⇛ addMapForm', addMapForm);
-  console.log('▶ ⇛ addMapForm', addMapForm);
-  console.log('▶ ⇛ addMapForm', addMapForm);
-  console.log('▶ ⇛ addMapForm', addMapForm);
 });

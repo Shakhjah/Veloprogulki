@@ -1,5 +1,5 @@
 ymaps.ready(() => {
-  const myMap = new ymaps.Map('map', {
+  const myMap = new ymaps.Map('mapAddId', {
     center: [55.751574, 37.573856],
     zoom: 12,
     controls: ['zoomControl', 'routeButtonControl'], // Элементы управления
@@ -132,20 +132,16 @@ ymaps.ready(() => {
         const result = await reqMapAdd.text();
         // Ответ с сервер "ОК" Карта создана
         if (result) {
-          const mapBlock = document.getElementById('addMap');
-          mapBlock.setAttribute('hidden', 'true');
+          window.location.assign('/addroad');
+          // const mapBlock = document.getElementById('addMap');
+          // mapBlock.setAttribute('hidden', 'true');
         }
-
-        // // -------------------- Формируем обьект для отправки на сервер с картой
-        // // Для автомобильных маршрутов можно вывести
-        // // информацию о перекрытых участках.
-        // if (activeRoute.properties.get('blocked')) {
-        //   console.log('На маршруте имеются участки с перекрытыми дорогами.');
-        // }
       });
       //-------------------------
     } else {
-      console.log('Ничего не выбрано');
+      const field = document.getElementById('noChoiseId');
+      field.removeAttribute('hidden');
+      // console.log('Ничего не выбрано');
     }
   });
 });

@@ -38,8 +38,10 @@ module.exports = function ({ dataMap }) {
                 </p>
                 <p>Рейтинг: 4,7</p>
               </div>
+              <input type="text" id="from" name="from" value={el.mapFrom} hidden />
+              <input type="text" id="to" name="to" value={el.mapTo} hidden />
               <div className="btn_content">
-                <a href={`/about/${el.id}`}>Подробнее</a>
+                <a href={`/about?id=${el.id}`}>Подробнее</a>
               </div>
             </div>
           ))

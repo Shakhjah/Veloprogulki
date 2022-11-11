@@ -3,14 +3,28 @@ const session = require('express-session');
 const router = require('express').Router();
 const Personal = require('../views/Personal');
 const renderTemplate = require('../lib/renderTemplate');
-const { BikeTrack } = require('../../db/models');
-
+const { BikeTrack, User } = require('../../db/models');
 
 router.get('/', async (req, res) => {
-  const userid = req.session.userid;
-  const findCard = await BikeTrack.findAll({ where: { userId: userid }})
-  // console.log(findCard);
-  renderTemplate(Personal, { findCard }, res);
+  try {
+    const allMap = await BikeTrack.findAll({
+      where: {
+        userId: req.session.userid,
+      },
+      include: {
+        model: User,
+        raw: true,
+      },
+
+    });
+    const dataMap = allMap.map((el) => el.dataValues);
+    // console.log('сюда смотри ===>>>>', dataMap[0]);
+
+    renderTemplate(Personal, { dataMap }, res);
+  } catch (error) {
+    console.log(error);
+  }
+  
 });
 
 router.post('/saveMap', (req, res) => {

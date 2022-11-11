@@ -14,7 +14,9 @@ module.exports = function ({ dataMap }) {
         {Array.isArray(dataMap) && (
           dataMap.map((el) => (
             <div className="content">
-              <div className="mapDiv">1</div>
+              <div className="mapDiv">
+                <img src={`https://static-maps.yandex.ru/1.x/?spn=0.1,0.1&l=map&pt=${JSON.parse(el.mapFrom)[1]},${JSON.parse(el.mapFrom)[0]},org~${JSON.parse(el.mapTo)[1]},${JSON.parse(el.mapTo)[0]},org`} />
+              </div>
               <div className="text_content">
                 <p>
                   Длина маршрута:

@@ -23,9 +23,6 @@ module.exports = function About({ data, userName }) {
           <div className="map-block">
             <div id="mapAbout" />
           </div>
-          <div className="map-block">
-            <div id="mapAbout" />
-          </div>
         </div>
         <a href={`https://yandex.ru/maps/?z=7&l=map&rtext=${linkFrom}~${linkTo}&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end`}>Ссылка на карту</a>
       </div>

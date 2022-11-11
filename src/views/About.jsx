@@ -49,7 +49,7 @@ module.exports = function About({ data, userName, userSession }) {
             <p>Рейтинг: 4,7</p>
           </div>
           <div className="qrcode">
-            <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${linkQr}&amp;size=322x322`} alt="asd" title="asd" />
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://yandex.ru/maps/213/moscow/?from=api-maps&ll=37.619000%2C55.780094&mode=routes&rtext=55.777691%2C37.582096~55.775950%2C37.655910&rtt=bc&ruri=~&source=jsapi_2_1_79&utm_medium=localhost%3A3000%3Bend&utm_source=api-maps&z=14&amp;size=322x322" alt="" title="" />
           </div>
           <a href={linkQr}>Ссылка на карту</a>
 

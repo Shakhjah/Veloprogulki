@@ -228,6 +228,34 @@ a:active {
     width: 400px;
     height: 50px;
 }
+.add-road {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#mapAddId {
+    width: 500px;
+    height: 300px;
+}
+
+.block-addMap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    text-align: center;
+}
+
+#addMapForm {
+    margin-bottom: 40px;
+}
+
+#noChoiseId {
+    margin-top: 20px;
+    font-family: 'Comfortaa';
+    font-weight: 600;
 
 .mapDiv>img {
     height: 300px;

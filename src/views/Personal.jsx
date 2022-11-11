@@ -5,6 +5,7 @@ module.exports = function Personal({ dataMap }) {
   console.log('я тут ========>>>>', dataMap);
   return (
     <Layout>
+      <script defer src="/js/deleteFetch.js" />
       <script
         defer
         src="https://api-maps.yandex.ru/2.1/?apikey=ee11c971-3558-49d6-8fae-209f13ccaf25&lang=ru_RU"
@@ -14,7 +15,7 @@ module.exports = function Personal({ dataMap }) {
       <div className="allPublic">
         {Array.isArray(dataMap) && (
           dataMap.map((el) => (
-            <div className="content">
+            <div id="content" className={`content${el.id}`}>
               <div className="mapDiv">1</div>
               <div className="text_content">
                 <p>
@@ -42,8 +43,8 @@ module.exports = function Personal({ dataMap }) {
               <input type="text" id="from" name="from" value={el.mapFrom} hidden />
               <input type="text" id="to" name="to" value={el.mapTo} hidden />
               <div className="btn_content">
-                <a href="#">Редактировать</a>
-                <a href="#">Удалить</a>
+                {/* <a href="#">Редактировать</a> */}
+                <button id={el.id} className="delete_btn">Удалить</button>
               </div>
             </div>
           ))

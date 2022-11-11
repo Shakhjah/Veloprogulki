@@ -13,7 +13,7 @@ module.exports = function ({ dataMap }) {
       <div className="allPublic">
         {Array.isArray(dataMap) && (
           dataMap.map((el) => (
-            <div className="content">
+            <div id="content">
               <div className="mapDiv">
                 <img src={`https://static-maps.yandex.ru/1.x/?spn=0.1,0.1&l=map&pt=${JSON.parse(el.mapFrom)[1]},${JSON.parse(el.mapFrom)[0]},org~${JSON.parse(el.mapTo)[1]},${JSON.parse(el.mapTo)[0]},org`} />
               </div>

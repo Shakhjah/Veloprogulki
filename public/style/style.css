@@ -153,7 +153,8 @@ a:active {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.content {
+
+#content {
     width: 380px;
     height: 570px;
     border:  2px solid #fcdb4a;
@@ -256,7 +257,7 @@ a:active {
     margin-top: 20px;
     font-family: 'Comfortaa';
     font-weight: 600;
-
+}
 .mapDiv>img {
     height: 300px;
     width: 370px;

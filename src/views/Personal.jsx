@@ -65,7 +65,7 @@ module.exports = function Personal({ dataMap, text }) {
               <input type="text" id="to" name="to" value={el.mapTo} hidden />
               <div className="btn_content">
                 {/* <a href="#">Редактировать</a> */}
-                <button id={el.id} className="btn btn-primary">Удалить</button>
+                <button id={el.id} className="delete_btn btn btn-primary">Удалить</button>
               </div>
             </div>
           ))

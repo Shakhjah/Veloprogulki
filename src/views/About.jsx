@@ -26,4 +26,3 @@ module.exports = function About({ data, userName }) {
     </Layout>
   );
 };
-git 

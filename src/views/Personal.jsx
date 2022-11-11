@@ -1,7 +1,8 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function Personal(props) {
+module.exports = function Personal({ dataMap }) {
+  console.log('я тут ========>>>>', dataMap);
   return (
     <Layout>
       <script
@@ -10,23 +11,43 @@ module.exports = function Personal(props) {
         type="text/javascript"
       />
       <div className="allPublic">
+        {Array.isArray(dataMap) && (
+          dataMap.map((el) => (
+            <div className="content">
+              <div className="mapDiv">1</div>
+              <div className="text_content">
+                <p>
+                  Длина маршрута:
+                  {' '}
+                  {el.distanse}
+                </p>
+                <p>
+                  Населенный пункт:
+                  {' '}
+                  {el.city}
+                </p>
+                <p>
+                  Название маршрута:
+                  {' '}
+                  {el.title}
+                </p>
+                <p>
+                  Автор:
+                  {' '}
+                  {el.User.dataValues.name}
+                </p>
+                <p>Рейтинг: 4,7</p>
+              </div>
+              <input type="text" id="from" name="from" value={el.mapFrom} hidden />
+              <input type="text" id="to" name="to" value={el.mapTo} hidden />
+              <div className="btn_content">
+                <a href="#">Редактировать</a>
+                <a href="#">Удалить</a>
+              </div>
+            </div>
+          ))
+        )}
 
-        <div className="content_lk">
-          {' '}
-          <div className="mapDiv">1</div>
-          {' '}
-          <div className="text_content">
-            <p>Длина маршрута: 2,5км</p>
-            <p>Населенный пункт: Москва</p>
-            <p>Название маршрута: Мой маршрут №1</p>
-            <p>Автор: Василий Петров</p>
-            <p>Рейтинг: 4,7</p>
-          </div>
-          <div className="btn_content">
-            <a href="#">Редактировать</a>
-            <a href="#">Удалить</a>
-          </div>
-        </div>
       </div>
       <script defer src="js/map.js" />
     </Layout>

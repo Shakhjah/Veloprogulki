@@ -19,9 +19,9 @@ body {
         height: 800px;
         }
         
-        #mapAbout {
-            width: 800px;
-    height: 800px;
+ #mapAbout {
+    width: 800px;
+    height: 600px;
 }
 #map_content {
     width: 600px;
@@ -182,4 +182,47 @@ a:active {
 .container_personal {
     display: flex;
     flex-direction: column;
+}
+.about_content {
+    display: flex;
+}
+.about_map {
+    box-sizing: border-box;
+    height: 600px;
+
+}
+.about_road {
+    font-size: 20px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.row { 
+    display: block;
+    margin: 0;
+}
+.row>* { 
+    margin: 0;
+}
+.qrcode {
+    height: 322px;
+    width: 322px;
+    background-color: #505759;
+}
+.about_comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+.view_comment {
+    width: 800px;
+    background-color: #505759;
+}
+.add_comment>input {
+    margin: 20px;
+    width: 400px;
+    height: 50px;
 }

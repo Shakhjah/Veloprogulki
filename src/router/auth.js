@@ -59,6 +59,6 @@ router.post('/sess', (req, res) => {
 });
 
 router.get('/personal', (req, res) => {
-
+  console.log('hello world');
 });
 module.exports = router;

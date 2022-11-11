@@ -2,12 +2,8 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function About({ data, userName }) {
-  // const linkFrom = data.mapFrom.replaceAll('[,]', '');
   const linkFrom = (JSON.parse(data.mapFrom)).join(',');
   const linkTo = (JSON.parse(data.mapTo)).join(',');
-  // console.log('▶ ⇛ linkFrom', linkFrom);
-  // console.log('▶ ⇛ dataFROM', data.mapFrom);
-  // console.log('▶ ⇛ data', data);
   return (
     <Layout>
       <script

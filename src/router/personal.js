@@ -24,12 +24,23 @@ router.get('/', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+  
 });
 
 router.post('/saveMap', (req, res) => {
-  console.log('IN SAVEMAP', req.body);
+  // console.log('IN SAVEMAP', req.body);
   // const userName = req.session.username;
   res.send('OK');
+});
+
+router.delete('/delete', async (req, res) => {
+  try {
+    await BikeTrack.findByPk(req.body.id, { raw: true });
+    await BikeTrack.destroy({ where: { id: req.body.id } });
+    res.json({ re: 'запись удалена' });
+  } catch (error) {
+    console.log('errdelete', error);
+  }
 });
 
 module.exports = router;

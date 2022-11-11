@@ -10,6 +10,7 @@ module.exports = function Personal({ dataMap }) {
         src="https://api-maps.yandex.ru/2.1/?apikey=ee11c971-3558-49d6-8fae-209f13ccaf25&lang=ru_RU"
         type="text/javascript"
       />
+
       <div className="allPublic">
         {Array.isArray(dataMap) && (
           dataMap.map((el) => (

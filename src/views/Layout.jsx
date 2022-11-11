@@ -24,7 +24,6 @@ module.exports = function Layout({ children, userName }) {
           <div className="container_top">
             <div className="stockNav">
               <a href="/main">Главная</a>
-              <a className="leftblock" href="/map">Map </a>
             </div>
             <div id="authOne" hidden>
               <a href="/" data-bs-toggle="modal" data-bs-target="#signInModal">Войти</a>

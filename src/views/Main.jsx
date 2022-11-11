@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function ({ dataMap }) {
-  // console.log('▶ ⇛ Allmaps', dataMap);
   return (
     <Layout>
       <script

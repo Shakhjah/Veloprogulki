@@ -42,12 +42,15 @@ val.addEventListener('submit', async (event) => {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    console.log('▶ ⇛ result FRONT', result);
+
     if (result?.user) {
       const inModal = bootstrap.Modal.getOrCreateInstance(signInmodal);
       inModal.hide();
       authTwo.removeAttribute('hidden');
       authOne.setAttribute('hidden', true);
+      if (document.location.pathname !== '/main') {
+        document.location.reload();
+      }
     }
     if (result?.answer) {
       const addMessage = val.querySelector('.modal-body');
@@ -92,6 +95,10 @@ reg.addEventListener('submit', async (event) => {
       upModal.hide();
       authTwo.removeAttribute('hidden');
       authOne.setAttribute('hidden', true);
+
+      if (document.location.pathname !== '/main') {
+        document.location.reload();
+      }
     }
   } catch (error) {
     console.log(error);

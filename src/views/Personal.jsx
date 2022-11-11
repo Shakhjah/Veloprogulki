@@ -23,21 +23,12 @@ module.exports = function Personal({ dataMap, text }) {
       <div className="allPublic">
         {Array.isArray(dataMap) && (
           dataMap.map((el) => (
-<<<<<<< HEAD
-            // <div className="content">
-            //   <div className="mapDiv">
-            //     <img src={`https://static-maps.yandex.ru/1.x/?spn=0.1,0.1&l=map&pt=${JSON.parse(el.mapFrom)[1]},${JSON.parse(el.mapFrom)[0]},org~${JSON.parse(el.mapTo)[1]},${JSON.parse(el.mapTo)[0]},org`} />
-            //   </div>
-            <div id="content" className={`content${el.id}`}>
-              <div className="mapDiv">1</div>
-=======
 
             <div id="content" className={`content${el.id}`}>
 
               <div className="mapDiv">
                 <img src={`https://static-maps.yandex.ru/1.x/?spn=0.1,0.1&l=map&pt=${JSON.parse(el.mapFrom)[1]},${JSON.parse(el.mapFrom)[0]},org~${JSON.parse(el.mapTo)[1]},${JSON.parse(el.mapTo)[0]},org`} />
               </div>
->>>>>>> dd980d351e61272d490593ec2bd0bb6583d92b49
               <div className="text_content">
                 <p>
                   Длина маршрута:

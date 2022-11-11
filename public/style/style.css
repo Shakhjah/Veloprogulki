@@ -10,10 +10,12 @@ body {
 }
 
 #map {
-    width: 800px;
-        height: 800px;
+    width: 600px;
+        height: 300px;
     }
-    
+.ymaps-2-1-79-copyright--content {
+    display: none;
+}
 #map2 {
         width: 800px;
         height: 800px;
@@ -138,7 +140,7 @@ a:active {
 
 .red-text {
     color: red;
-    font-size: 12px;
+    font-size: 1rempx;
 }
 
 .lineBorder {

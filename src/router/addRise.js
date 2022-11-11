@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
     distanse: req.body.distanse,
     userId: req.body.userId,
     city: req.body.city,
-    title: req.body.title,
+    title: req.body.title || 'Без названия',
   });
   console.log('▶ ⇛ newMap', newMap);
 

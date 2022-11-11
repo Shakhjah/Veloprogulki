@@ -18,9 +18,11 @@ module.exports = (sequelize, DataTypes) => {
   BikeTrack.init({
     title: DataTypes.STRING,
     city: DataTypes.STRING,
-    lengthroad: DataTypes.STRING,
+    distanse: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    map: DataTypes.STRING,
+    mapFrom: DataTypes.STRING,
+    mapTo: DataTypes.STRING,
+    routeType: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'BikeTrack',

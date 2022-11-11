@@ -41,7 +41,8 @@ module.exports = function ({ dataMap }) {
                 <p>Рейтинг: 4,7</p>
               </div>
               <div className="btn_content">
-                <a href={`/about?id=${el.id}`}>Подробнее</a>
+                <button className="btn btn-primary"><a href={`/about?id=${el.id}`}>Подробнее</a></button>
+                {/* <a href={`/about?id=${el.id}`}>Подробнее</a> */}
               </div>
             </div>
           ))

@@ -18,13 +18,17 @@ router.get('/', async (req, res) => {
 
     });
     const dataMap = allMap.map((el) => el.dataValues);
-    // console.log('сюда смотри ===>>>>', dataMap[0]);
-
-    renderTemplate(Personal, { dataMap }, res);
+    function countValidate(arr) {
+      if (arr.length === 1) return 'маршрут';
+      if (arr.length > 1 && arr.length < 5) return 'маршрута';
+      if (arr.length === 0 || arr.length > 4) return 'маршрутов';
+    }
+    const text = countValidate(dataMap);
+    console.log('▶ ⇛ text', text);
+    renderTemplate(Personal, { dataMap, text }, res);
   } catch (error) {
     console.log(error);
   }
-  
 });
 
 router.post('/saveMap', (req, res) => {

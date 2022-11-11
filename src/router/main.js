@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
       },
     });
     const dataMap = allMap.map((el) => el.dataValues);
-    console.log('▶ ⇛ dataMapUUUUSSSEERRR', dataMap[0].User.dataValues.name);
     renderTemplate(Main, { dataMap }, res);
   } catch (error) {
     console.log('Ошибка при получении Карт');

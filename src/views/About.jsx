@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-module.exports = function About({ data, userName }) {
+module.exports = function About({ data, userName, userSession }) {
   const linkFrom = (JSON.parse(data.mapFrom)).join(',');
   const linkTo = (JSON.parse(data.mapTo)).join(',');
   const linkQr = `https://yandex.ru/maps/?z=7&l=map&rtext=${linkFrom}~${linkTo}&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end`;
@@ -49,16 +49,23 @@ module.exports = function About({ data, userName }) {
             <p>Рейтинг: 4,7</p>
           </div>
           <div className="qrcode">
-            <img src={'https://api.qrserver.com/v1/create-qr-code/?data=привет&amp;size=322x322'} alt="asd" title="asd" />
+            <img src={`https://api.qrserver.com/v1/create-qr-code/?data=${linkQr}&amp;size=322x322`} alt="asd" title="asd" />
           </div>
           <a href={linkQr}>Ссылка на карту</a>
 
         </div>
 
       </div>
+
       <div className="about_comment">
-        123
+        <button className="btn btn-primary" type="submit" name="map-save" id="mapSaveId">Комментарии</button>
       </div>
+      {(userSession && (
+        <div className="about_comment_add">
+          <button className="btn btn-primary" type="submit" name="map-save" id="mapSaveId">Добавить Комментарий</button>
+        </div>
+      ))}
+
       <script defer src="js/mapAbout.js" />
     </Layout>
   );

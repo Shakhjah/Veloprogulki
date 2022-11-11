@@ -109,6 +109,4 @@ function init() {
 
 ymaps.ready(init);
 
-
-
-https://yandex.ru/maps/213/moscow/?from=api-maps&ll=37.606229%2C55.768513&mode=routes&rtext=55.781768%2C37.605788~55.755253%2C37.594801&rtt=bc&ruri=~&source=jsapi_2_1_79&utm_medium=localhost%3A3000&utm_source=api-maps&z=14
+// https://yandex.ru/maps/213/moscow/?from=api-maps&ll=37.606229%2C55.768513&mode=routes&rtext=55.781768%2C37.605788~55.755253%2C37.594801&rtt=bc&ruri=~&source=jsapi_2_1_79&utm_medium=localhost%3A3000&utm_source=api-maps&z=14

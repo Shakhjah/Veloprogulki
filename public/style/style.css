@@ -62,7 +62,6 @@ a {
 a:hover {
     background-size: 100% 2px;
     color: #ffe366;
-
 }
 a:active {
     color: #fff;
@@ -153,15 +152,19 @@ a:active {
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.content {
+
+#content {
     width: 380px;
     height: 570px;
-    border:  2px solid #fcdb4a;
+    border:  2px solid #505759;
     border-radius: 10px;
     margin-bottom: 15px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    box-shadow: 10px 5px 5px #d2d2d2;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 .content_lk {
     width: 380px;
@@ -174,12 +177,6 @@ a:active {
     justify-content: center;
 }
 
-.mapDiv {
-    background-color: #505759;
-    margin: 10px;
-    height: 300px;
-    width: 370px;
-}
 
 .container_personal {
     display: flex;
@@ -256,8 +253,34 @@ a:active {
     margin-top: 20px;
     font-family: 'Comfortaa';
     font-weight: 600;
-
+}
 .mapDiv>img {
-    height: 300px;
-    width: 370px;
+    height: 280px;
+    width: 350px;
+    border-radius: 10px;
+}
+
+.text_content {
+    width: 350px;
+}
+.delete_btn {
+    width: 200px;
+    border-radius: 10px;
+    background-color: #505759;
+}
+.btn:hover {
+    color: #505759;
+}
+.btn>a {
+    text-decoration: none;
+    transition: 0s;
+}
+.btn>a:hover {
+    background-size: 100% 0px;
+    color: #505759;
+}
+.btn:active {
+    color: var(--bs-btn-active-color);
+    background-color: #fcdb4a ;
+    border-color: #fcdb4a;
 }

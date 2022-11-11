@@ -15,7 +15,7 @@ const signUpmodal = document.getElementById('signUpModal');
       },
     });
     const result = await response.json();
-    console.log('▶ ⇛ FRONT RUN SCRIPT', result);
+    // console.log('▶ ⇛ FRONT RUN SCRIPT', result);
     // Если есть куки
     if (result) {
       authTwo.removeAttribute('hidden', true);
@@ -57,7 +57,7 @@ val.addEventListener('submit', async (event) => {
       addMessage.append(divMessage);
       val.reset();// Очистить все поля
     }
-    console.log('▶ ⇛ result', result);
+    // console.log('▶ ⇛ result', result);
   } catch (error) {
     console.log(error);
   }

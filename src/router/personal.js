@@ -24,7 +24,6 @@ router.get('/', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-  
 });
 
 router.post('/saveMap', (req, res) => {
@@ -33,10 +32,12 @@ router.post('/saveMap', (req, res) => {
   res.send('OK');
 });
 
-router.delete('/delete', async (req, res) => {
+router.delete('/', async (req, res) => {
   try {
+    const { id } = req.body;
     await BikeTrack.findByPk(req.body.id, { raw: true });
     await BikeTrack.destroy({ where: { id: req.body.id } });
+    console.log('id ======>>>>>>', id);
     res.json({ re: 'запись удалена' });
   } catch (error) {
     console.log('errdelete', error);

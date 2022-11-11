@@ -228,3 +228,8 @@ a:active {
     width: 400px;
     height: 50px;
 }
+
+.mapDiv>img {
+    height: 300px;
+    width: 370px;
+}

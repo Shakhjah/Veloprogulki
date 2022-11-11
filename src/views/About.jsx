@@ -75,7 +75,7 @@ module.exports = function About({ data, userName, userSessionId }) {
 
       <script defer src="js/mapAbout.js" />
       <script defer src="js/addComment.js" />
-      <ModalAddComment />
+      <ModalAddComment userId={userSessionId} routeId={data.id} />
     </Layout>
   );
 };

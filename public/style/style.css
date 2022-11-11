@@ -139,7 +139,8 @@ a:active {
 
 .red-text {
     color: red;
-    font-size: 1rempx;
+    font-size: 1rem;
+        font-weight: 600;
 }
 
 .lineBorder {
@@ -233,8 +234,8 @@ a:active {
 }
 
 #mapAddId {
-    width: 500px;
-    height: 300px;
+    width: 1000px;
+        height: 400px;
 }
 
 .block-addMap {
@@ -288,4 +289,15 @@ a:active {
     color: var(--bs-btn-active-color);
     background-color: #fcdb4a ;
     border-color: #fcdb4a;
+}
+#commentTitleTextId {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.green-text {
+    color: rgb(8, 112, 53);
+    font-size: 1rem;
+    font-weight: 600;
 }

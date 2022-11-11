@@ -1,23 +1,25 @@
 const express = require('express');
 const session = require('express-session');
 const router = require('express').Router();
-const Main = require('../views/Main');
+const About = require('../views/About');
 const renderTemplate = require('../lib/renderTemplate');
 const { BikeTrack, User } = require('../../db/models');
 
 router.get('/', async (req, res) => {
   try {
-    const allMap = await BikeTrack.findAll({
+    const mapAbout = await BikeTrack.findOne({
+      where: {
+        id: req.query.id,
+      },
       include: {
         model: User,
-        raw: true,
       },
     });
-    const dataMap = allMap.map((el) => el.dataValues);
-    console.log('▶ ⇛ dataMapUUUUSSSEERRR', dataMap[0].User.dataValues.name);
-    renderTemplate(Main, { dataMap }, res);
+    const data = mapAbout.dataValues;
+    const userName = mapAbout.User.dataValues.name;
+    renderTemplate(About, { data, userName }, res);
   } catch (error) {
-    console.log('Ошибка при получении Карт');
+    console.log(error);
   }
 });
 

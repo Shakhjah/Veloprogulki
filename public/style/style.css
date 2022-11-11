@@ -14,9 +14,14 @@ body {
         height: 800px;
     }
     
-    #map2 {
+#map2 {
         width: 800px;
         height: 800px;
+        }
+        
+ #mapAbout {
+    width: 800px;
+    height: 600px;
 }
 #map_content {
     width: 600px;
@@ -108,6 +113,19 @@ a:active {
 .btn-secondary:hover {
     background-color: #fcdb4a;
 }
+
+.button_content {
+    padding: 0px;
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 200px;
+}
+.button_content:hover {
+    background-color: #fcdb4a;
+
+}
+
 .modal-dialog-centered {
     display: flex;
     min-height: calc(100% - var(--bs-modal-margin) * 2);
@@ -135,16 +153,76 @@ a:active {
 }
 .content {
     width: 380px;
-    height: 510px;
-    background-color: #fcdb4a;
+    height: 570px;
+    border:  2px solid #fcdb4a;
+    border-radius: 10px;
     margin-bottom: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+.content_lk {
+    width: 380px;
+    height: 570px;
+    border:  2px solid #fcdb4a;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .mapDiv {
     background-color: #505759;
     margin: 10px;
     height: 300px;
     width: 370px;
+}
+
+.container_personal {
+    display: flex;
+    flex-direction: column;
+}
+.about_content {
+    display: flex;
+}
+.about_map {
+    box-sizing: border-box;
+    height: 600px;
+
+}
+.about_road {
+    font-size: 20px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.row { 
+    display: block;
+    margin: 0;
+}
+.row>* { 
+    margin: 0;
+}
+.qrcode {
+    height: 322px;
+    width: 322px;
+    background-color: #505759;
+}
+.about_comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+.view_comment {
+    width: 800px;
+    background-color: #505759;
+}
+.add_comment>input {
+    margin: 20px;
+    width: 400px;
+    height: 50px;
 }

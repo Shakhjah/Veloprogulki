@@ -1,4 +1,3 @@
-'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -7,30 +6,36 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       city: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      lengthroad: {
-        type: Sequelize.STRING
+      distanse: {
+        type: Sequelize.STRING,
       },
       userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
-          key: 'id'
+          key: 'id',
         },
       },
-      map: {
-        type: Sequelize.STRING
+      mapFrom: {
+        type: Sequelize.STRING,
+      },
+      mapTo: {
+        type: Sequelize.STRING,
+      },
+      routeType: {
+        type: Sequelize.STRING,
       },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('BikeTracks');
-  }
+  },
 };

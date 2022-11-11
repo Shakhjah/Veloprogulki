@@ -254,16 +254,10 @@ a:active {
     font-family: 'Comfortaa';
     font-weight: 600;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> dd980d351e61272d490593ec2bd0bb6583d92b49
 
 .mapDiv>img {
     height: 300px;
     width: 370px;
-<<<<<<< HEAD
-=======
 }
 
 .mapDiv>img {
@@ -295,5 +289,4 @@ a:active {
     color: var(--bs-btn-active-color);
     background-color: #fcdb4a ;
     border-color: #fcdb4a;
->>>>>>> dd980d351e61272d490593ec2bd0bb6583d92b49
 }

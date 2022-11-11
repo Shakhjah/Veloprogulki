@@ -228,7 +228,6 @@ a:active {
     width: 400px;
     height: 50px;
 }
-<<<<<<< HEAD
 .add-road {
     display: flex;
     flex-direction: row;
@@ -257,10 +256,8 @@ a:active {
     margin-top: 20px;
     font-family: 'Comfortaa';
     font-weight: 600;
-=======
 
 .mapDiv>img {
     height: 300px;
     width: 370px;
->>>>>>> Andrew
 }

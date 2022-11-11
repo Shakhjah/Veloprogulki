@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
     });
     const data = mapAbout.dataValues;
     const userName = mapAbout.User.dataValues.name;
-    const userSession = req.session.username;
-    renderTemplate(About, { data, userName, userSession }, res);
+    const userSessionId = req.session.userid;
+    renderTemplate(About, { data, userName, userSessionId }, res);
   } catch (error) {
     console.log(error);
   }

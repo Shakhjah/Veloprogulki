@@ -35,6 +35,7 @@ const Main = require('./router/main');
 const personal = require('./router/personal');
 const AddRise = require('./router/addRise');
 const aboutRoute = require('./router/aboutRouter');
+const addCommentRoute = require('./router/addCommentRoute');
 
 app.use('/', firstPage);
 app.use('/auth', auth);
@@ -43,6 +44,7 @@ app.use('/main', Main);
 app.use('/personal', personal);
 app.use('/addroad', AddRise);
 app.use('/about', aboutRoute);
+app.use('/addcomment', addCommentRoute);
 
 const { SESSION_SECRET } = process.env;
 const { PORT } = process.env;

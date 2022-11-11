@@ -1,7 +1,12 @@
 const React = require('react');
 const Layout = require('./Layout');
+const ModalAddComment = require('./ModalAddComment');
 
-module.exports = function About({ data, userName, userSession }) {
+module.exports = function About({ data, userName, userSessionId }) {
+  console.log('▶ ⇛ ABOUTuserSession', userSessionId);
+  console.log('▶ ⇛ ABOUTdata', data);
+  console.log('▶ ⇛ ABOUTROUTEID', data.id);
+
   const linkFrom = (JSON.parse(data.mapFrom)).join(',');
   const linkTo = (JSON.parse(data.mapTo)).join(',');
   const linkQr = `https://yandex.ru/maps/?z=7&l=map&rtext=${linkFrom}~${linkTo}&rtn=0&rtt=bc&rtm=atm&source=jsapi_2_1_79&from=api-maps&utm_source=api-maps&utm_medium=localhost:3000;end`;
@@ -62,13 +67,15 @@ module.exports = function About({ data, userName, userSession }) {
       <div className="about_comment">
         <button className="btn btn-primary" type="submit" name="map-save" id="mapSaveId">Комментарии</button>
       </div>
-      {(userSession && (
+      {(userSessionId && (
         <div className="about_comment_add">
-          <button className="btn btn-primary" type="submit" name="map-save" id="mapSaveId">Добавить Комментарий</button>
+          <button className="btn btn-primary" type="submit" name="map-save" id="addCommentId" data-bs-toggle="modal" data-bs-target="#addCommentModal">Добавить Комментарий</button>
         </div>
       ))}
 
       <script defer src="js/mapAbout.js" />
+      <script defer src="js/addComment.js" />
+      <ModalAddComment />
     </Layout>
   );
 };

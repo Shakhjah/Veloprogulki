@@ -1,0 +1,31 @@
+const React = require('react');
+
+module.exports = function ModalAddComment({ children }) {
+  return (
+    // Modal Добавить комментарий
+    <div className="modal fade" id="addCommentModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h1 className="modal-title fs-5" id="exampleModalLabel">Ваш комментарий</h1>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+          </div>
+          <form action="/" method="post" id="addCommentIdForm">
+
+            <div className="modal-body">
+              <label className="title-text">
+                Комментарий
+                <textarea name="comment" className="form-control" type="text" required="true" autoComplete="off" />
+              </label>
+              <br />
+            </div>
+            <div className="modal-footer">
+              <button name="modalClose" type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button name="modalSaveChange" type="submit" className="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};

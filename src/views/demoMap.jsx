@@ -15,14 +15,22 @@ module.exports = function (props) {
           <div className="map-block">
             <div id="map" />
           </div>
-          <div className="map-block">
+          {/* <div className="map-block">
             <div id="map2" />
+          </div> */}
+          <div className="map-block">
+            <div id="map3" />
           </div>
         </div>
         <button type="submit" name="map-save" id="mapSaveId">Сохранить маршрут</button>
       </div>
 
       <script defer src="js/map2.js" />
+      <script defer src="js/map3.js" />
     </Layout>
   );
 };
+// ee11c971-3558-49d6-8fae-209f13ccaf25
+
+// https://geocode-maps.yandex.ru/1.x/?apikey=ee11c971-3558-49d6-8fae-209f13ccaf25&geocode=37.611347,55.760241
+// https://geocode-maps.yandex.ru/1.x/?apikey=ee11c971-3558-49d6-8fae-209f13ccaf25&geocode=37.589648851918376,55.757984716213045

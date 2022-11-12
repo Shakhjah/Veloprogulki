@@ -154,3 +154,28 @@ const multiRoute = new ymaps.multiRouter.MultiRoute({
   // "way" - путевые точки.
   editorMidPointsType: 'via',
 });
+const coords = [
+  [55.75, 37.50],
+  [55.75, 37.71],
+  [55.70, 37.70],
+];
+const myCollection = new ymaps.GeoObjectCollection({}, {
+  preset: 'islands#redIcon', // все метки красные
+  draggable: true, // и их можно перемещать
+});
+
+for (let i = 0; i < coords.length; i++) {
+  myCollection.add(new ymaps.Placemark(coords[i]));
+}
+console.log('▶ ⇛ myCollection', myCollection);
+
+myMap.geoObjects.add(myCollection);
+
+// При клике на карту все метки будут удалены.
+// myCollection.getMap().events.add('click', () => {
+//   myCollection.removeAll();
+// });
+myCollection.getMap().events.add('click', (e) => {
+  const coord = e.get('coords');
+  console.log('▶ ⇛ coords', coord);
+});

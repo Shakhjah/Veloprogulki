@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function ({ userName, userId }) {
-  console.log('IN ADDRISE VIEWS', userName, userId);
   return (
     <Layout>
       <div className="allPublic">

@@ -1,7 +1,6 @@
 const React = require('react');
 
 module.exports = function ModalAddComment({ userId, routeId }) {
-  console.log('▶ ⇛ routeIdINMODAL', routeId);
   return (
     // Modal Добавить комментарий
     <div className="modal fade" id="addCommentModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

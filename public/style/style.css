@@ -209,7 +209,6 @@ a:active {
 .qrcode {
     height: 322px;
     width: 322px;
-    background-color: #505759;
 }
 .about_comment {
     display: flex;

@@ -2,7 +2,6 @@ const React = require('react');
 const Modal = require('./Modal');
 
 module.exports = function Layout({ children, userName }) {
-  console.log(userName);
   return (
     <html lang="en">
       <head>
